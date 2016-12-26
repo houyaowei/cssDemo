@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <style> 
+            .container{
+                width:300px;
+                border: 1px solid darkcyan;
+            }   
+            .container .item{
+                width:50px;
+                height:50px;
+            }
+            .container .item:nth-child(1){
+                float:left;
+                background-color: red;
+            }
+            .container .item:nth-child(2){
+                float:left;
+                background-color:aqua;
+            }
+            .container .item:nth-child(3){
+                float:left;
+                background-color: coral;
+            }
+            .clear{
+                clear:both;
+            }
+
+            body {
+                background-image: url("background-photo.jpg");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                background-color: #464646;
+            }
+            @media only screen and (max-width: 767px) {
+            body {
+                background-image: url(images/background-photo-mobile-devices.jpg);
+                }
+            }
+        </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">item1</div>
+        <div class="item">item2</div>
+        <div class="item">item3</div>
+        <div class="clear"></div>
+    </div>
+    <div class="cover">
+        
+    </div>
+</body>
+    <script>
+        
+    </script>
+
+</html>
