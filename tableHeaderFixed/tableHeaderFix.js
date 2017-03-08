@@ -1,4 +1,4 @@
-;(function($) {
+(function($) {
    $.fn.fixMe = function() {
       return this.each(function() {
          var $this = $(this),
