@@ -29,12 +29,13 @@
                      textAlign: "center"
                  })
          );
-
      myDiagram.nodeTemplateMap.add("center",
-         $(go.Node, "Spot", {
-                 locationSpot: go.Spot.Center,
-                 click: expandCircle
+         $(go.Node, "Vertical", {
+                 locationSpot: go.Spot.Center
+                     //  click: expandCircle
              },
+             $(go.TextBlock, { alignment: go.Spot.Center },
+                 new go.Binding("text", "text")),
              new go.Binding("location", "loc", go.Point.parse),
              $(go.Panel, "Spot",
                  $(go.Shape, "Circle", {
@@ -44,23 +45,8 @@
                      },
                      new go.Binding("stroke", "hicolor"),
                      new go.Binding("strokeWidth", "hiwidth")),
-                 $(go.Shape, "Circle", {
-                         isPanelMain: true,
-                         fill: "transparent"
-                     },
-                     new go.Binding("stroke", "color"),
-                     new go.Binding("strokeWidth", "width")),
-                 $("HyperlinkText",
-                     function(node) {
-                         return "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(node.data.text);
-                     },
-                     function(node) {
-                         return node.data.text;
-                     }, {
-                         margin: 1,
-                         maxSize: new go.Size(80, 80),
-                         textAlign: "center"
-                     })
+                 $("Button", { alignment: go.Spot.TopRight },
+                     $(go.Shape, "PlusLine", { width: 8, height: 8 }), { click: expandCircle })
              )
          ));
      var thirdLevelTemplate = $(go.Node, "Spot", {
@@ -72,44 +58,8 @@
              stroke: null,
              width: 260,
              height: 260
-         }),
-         $(go.Shape, "Circle", {
-             fill: "rgba(128,128,128,0.1)",
-             stroke: null,
-             width: 160,
-             height: 160
-         }),
-         $(go.Shape, "Circle", {
-             fill: "rgba(128,128,128,0.05)",
-             stroke: null,
-             width: 80,
-             height: 80
-         }), $(go.Panel, "Spot",
-             $(go.Shape, "Circle", {
-                     isPanelMain: true,
-                     fill: "transparent",
-                     portId: ""
-                 },
-                 new go.Binding("stroke", "hicolor"),
-                 new go.Binding("strokeWidth", "hiwidth")),
-             $(go.Shape, "Circle", {
-                     isPanelMain: true,
-                     fill: "transparent"
-                 },
-                 new go.Binding("stroke", "color"),
-                 new go.Binding("strokeWidth", "width")),
-             $("HyperlinkText",
-                 function(node) {
-                     return "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(node.data.text);
-                 },
-                 function(node) {
-                     return node.data.text;
-                 }, {
-                     margin: 1,
-                     maxSize: new go.Size(80, 80),
-                     textAlign: "center"
-                 })
-         ));
+         }), $("Button", { alignment: go.Spot.TopRight },
+             $(go.Shape, "MinusLine", { width: 8, height: 8 }), { click: expandCircle }));
      var secondLevelTemplate = $(go.Node, "Spot", {
              locationSpot: go.Spot.Center
          },
@@ -120,39 +70,13 @@
              width: 160,
              height: 160
          }),
-         $(go.Shape, "Circle", {
-             fill: "rgba(128,128,128,0.05)",
-             stroke: null,
-             width: 80,
-             height: 80
-         }), $(go.Panel, "Spot",
-             $(go.Shape, "Circle", {
-                     isPanelMain: true,
-                     fill: "transparent",
-                     portId: ""
-                 },
-                 new go.Binding("stroke", "hicolor"),
-                 new go.Binding("strokeWidth", "hiwidth")),
-             $(go.Shape, "Circle", {
-                     isPanelMain: true,
-                     fill: "transparent"
-                 },
-                 new go.Binding("stroke", "color"),
-                 new go.Binding("strokeWidth", "width")),
-             $("HyperlinkText",
-                 function(node) {
-                     return "https://en.wikipedia.org/w/index.php?search=" + encodeURIComponent(node.data.text);
-                 },
-                 function(node) {
-                     return node.data.text;
-                 }, {
-                     margin: 1,
-                     maxSize: new go.Size(80, 80),
-                     textAlign: "center"
-                 })
-         ));
+         $("Button", { alignment: go.Spot.TopRight },
+             $(go.Shape, "PlusLine", { width: 8, height: 8 }), { click: expandCircle })
+     );
+
      myDiagram.nodeTemplateMap.add("secondLevel", secondLevelTemplate);
      myDiagram.nodeTemplateMap.add("thirdLevel", thirdLevelTemplate);
+
      //点击node节点放大
      function expandCircle(event, obj) {
          var node = obj.part;
@@ -189,28 +113,28 @@
          );
 
      var nodeDataArray = [{
-         key: 1,
+         key: "source",
          text: "源",
          loc: "20 100",
          hicolor: "lightblue",
          hiwidth: 7,
          category: "center"
      }, {
-         key: 2,
+         key: "preDis",
          text: "前置区",
          loc: "300 100",
          category: "center",
          hicolor: "lightblue",
          hiwidth: 7
      }, {
-         key: 3,
+         key: "shareDis",
          text: "共享",
          loc: "600 100",
          category: "center",
          hicolor: "lightblue",
          hiwidth: 7
      }, {
-         key: 4,
+         key: "consumer",
          text: "消费方",
          loc: "900 100",
          category: "center",
@@ -218,16 +142,16 @@
          hiwidth: 7
      }];
      var linkDataArray = [{
-             from: 1,
-             to: 2,
+             from: "source",
+             to: "preDis",
              color: "gray"
          }, {
-             from: 2,
-             to: 3,
+             from: "preDis",
+             to: "shareDis",
              color: "gray"
          }, {
-             from: 3,
-             to: 4,
+             from: "shareDis",
+             to: "consumer",
              color: "gray"
          }
 
