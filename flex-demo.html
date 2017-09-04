@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>flex demo</title>
+	<style type="text/css">
+		.container{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			a/*lign-items: flex-end;
+			align-content: flex-start;*/
+		}
+		.box-item {
+			display: inline-block;
+			margin:5px;
+			width:200px;
+			height:200px;
+			line-height: 200px;
+			background-color: #ffd200;
+			vertical-align: middle;
+			color:white;
+			font-size: 100px;
+			text-align: center;
+		}
+		.demo{
+			width:0;    
+			height:0;   
+			border:30px solid transparent;    
+			border-bottom-color:red;	
+		}
+		.test{
+		    width: 0px;
+		    height: 0px;
+		    border-right: 50px solid transparent;
+		    border-bottom: 50px solid blue;
+		    border-left: 50px solid transparent;
+		}
+		.top{
+			width: 100%;
+			text-align: center;
+			background-color: #333;
+		}
+		.bottom-left{
+			text-align: center;
+			display: inline-block;
+			width: 50%;
+			background-color: red;
+		}
+		.bottom-right{
+			text-align: center;
+			display: inline-block;
+			width: 50%;
+			background-color: blue;
+			float:right;
+		}
+		.ani{
+          width:480px;
+          height:320px;
+          margin:50px auto;
+          overflow: hidden;
+          box-shadow:0 0 5px rgba(0,0,0,1);
+          background-size: cover;
+          background-position: center;
+          -webkit-animation-name: "loops";
+          -webkit-animation-duration: 20s;
+          -webkit-animation-iteration-count: infinite;
+        }
+        @-webkit-keyframes "loops" {
+            0% {
+                background:url(http://d.hiphotos.baidu.com/image/w%3D400/sign=c01e6adca964034f0fcdc3069fc27980/e824b899a9014c08e5e38ca4087b02087af4f4d3.jpg) no-repeat;             
+            }
+            25% {
+                background:url(http://b.hiphotos.baidu.com/image/w%3D400/sign=edee1572e9f81a4c2632edc9e72b6029/30adcbef76094b364d72bceba1cc7cd98c109dd0.jpg) no-repeat;
+            }
+            50% {
+                background:url(http://b.hiphotos.baidu.com/image/w%3D400/sign=937dace2552c11dfded1be2353266255/d8f9d72a6059252d258e7605369b033b5bb5b912.jpg) no-repeat;
+            }
+            75% {
+                background:url(http://g.hiphotos.baidu.com/image/w%3D400/sign=7d37500b8544ebf86d71653fe9f9d736/0df431adcbef76095d61f0972cdda3cc7cd99e4b.jpg) no-repeat;
+            }
+            100% {
+                background:url(http://c.hiphotos.baidu.com/image/w%3D400/sign=cfb239ceb0fb43161a1f7b7a10a54642/3b87e950352ac65ce2e73f76f9f2b21192138ad1.jpg) no-repeat;
+            }
+        }
+        .floatAlign{
+        	float:right;
+        	width:500px ; 
+        	height:300px;
+			margin: -150px 0 0 -250px;
+			background-color: #6699FF;
+			position: absolute;
+			left:50%;
+			top:50%;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box-item">1</div>
+		<div class="box-item">2</div>
+		<div class="box-item">3</div>	
+		<div class="box-item">4</div>
+		<div class="box-item">5</div>
+		<div class="box-item">6</div>
+		<div class="box-item">7</div>	
+		<div class="box-item">8</div>
+	</div>
+	<div class="test">
+		
+	</div>
+	<div class="demo">
+		
+	</div>
+	<div>
+		<div class="top">top</div>
+
+		<div class="bottom-left">bottom-left</div>
+		<div class="bottom-right">bottom-right</div>
+	</div>
+	<ul>
+		<li>fsdfs</li>
+		<li>asdfasf</li>
+	</ul>
+	<div style="height:100px; margin-bottom:-75px;width:100px; background-color: red;">A</div>
+<div style="height:100px;margin-top:-50px; margin-left:50px; width:100px; background-color: green;">B</div>
+
+
+<div class="ani">
+	
+</div>
+<div class="floatAlign">
+	floatAlign
+</div>
+</body>
+</html>
